@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design shopee</title>
+    <script type="module" crossorigin src="/assets/index-BgJgxlvQ.js?v=form-updates-v2"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DryIfdPT.css">
+    <style>
+      /* ===== FLOATING CUSTOM QUOTE REQUEST BUTTON ===== */
+      #floating-quote-btn {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #C90A2B;
+        color: #fff;
+        font-family: 'Inter', 'Jost', system-ui, sans-serif;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 13px 20px;
+        border-radius: 100px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 8px 32px rgba(201,10,43,0.38), 0 2px 8px rgba(0,0,0,0.18);
+        text-decoration: none;
+        transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+        animation: float-in 0.6s 0.8s cubic-bezier(0.34,1.56,0.64,1) both;
+      }
+      #floating-quote-btn:hover {
+        background: #a80824;
+        transform: translateY(-3px) scale(1.04);
+        box-shadow: 0 16px 40px rgba(201,10,43,0.48), 0 4px 12px rgba(0,0,0,0.22);
+      }
+      #floating-quote-btn:active {
+        transform: translateY(-1px) scale(1.00);
+      }
+      #floating-quote-btn svg {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+      }
+      #floating-quote-btn .fqb-pulse {
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        background: #fff;
+        border-radius: 50%;
+        animation: fqb-blink 1.8s ease-in-out infinite;
+        flex-shrink: 0;
+      }
+      @keyframes float-in {
+        from { opacity: 0; transform: translateY(40px) scale(0.85); }
+        to   { opacity: 1; transform: translateY(0)    scale(1); }
+      }
+      @keyframes fqb-blink {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50%       { opacity: 0.4; transform: scale(0.7); }
+      }
+
+      /* ===== HEADER SOLID BACKGROUND OVERRIDE ===== */
+      /* Override any glass/opacity effects on the header panel when page is scrolled */
+      #site-header.scrolled .glass-panel {
+        background: rgba(255, 255, 255, 1) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+      }
+
+      /* ===== HEADER SHOP BUTTON ===== */
+      .header-shop-btn {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background-color: #C90A2B;
+        color: #ffffff;
+        font-family: 'Inter', 'Jost', system-ui, sans-serif;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 10px 22px;
+        border-radius: 100px;
+        text-decoration: none;
+        box-shadow: 0 4px 12px rgba(201, 10, 43, 0.2);
+        transition: all 0.25s ease;
+      }
+      @media (min-width: 1024px) {
+        .header-shop-btn {
+          display: flex;
+        }
+      }
+      .header-shop-btn:hover {
+        background-color: #a80824;
+        transform: translateY(-1px) scale(1.03);
+        box-shadow: 0 6px 16px rgba(201, 10, 43, 0.3);
+      }
+      .header-shop-btn:active {
+        transform: translateY(0) scale(1.0);
+      }
+
+      /* ===== MOBILE MENU SHOP BUTTON ===== */
+      .mobile-shop-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        background-color: #C90A2B;
+        color: #ffffff;
+        font-family: 'Inter', 'Jost', system-ui, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 14px 20px;
+        border-radius: 12px;
+        text-decoration: none;
+        box-shadow: 0 4px 12px rgba(201, 10, 43, 0.15);
+        transition: all 0.25s ease;
+        box-sizing: border-box;
+      }
+      .mobile-shop-btn:hover {
+        background-color: #a80824;
+      }
+
+      /* ===== ABOUT US - VISION/MISSION TITLES NO WRAP ===== */
+      .vision-mission-title,
+      [data-section="vission-mission"] h3,
+      [data-section="vision-mission"] h3 {
+        white-space: nowrap !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      /* ===== TOP MARQUEE TICKER ===== */
+      @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .animate-marquee-container {
+        overflow: hidden;
+        white-space: nowrap;
+        display: flex;
+        width: 100%;
+        background: #f8fafc;
+        border-bottom: 1px solid #f1f5f9;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 20;
+        padding: 8px 0;
+        user-select: none;
+      }
+      .animate-marquee-content {
+        display: inline-flex;
+        animation: marquee 25s linear infinite;
+        width: max-content;
+      }
+      .animate-marquee-item {
+        margin: 0 24px;
+        font-family: 'Inter', 'Jost', monospace, sans-serif;
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: #64748b;
+      }
+      
+      /* ===== KEN BURNS IMAGE ZOOM EFFECT ===== */
+      @keyframes kenburns {
+        0% { transform: scale(1.02); }
+        50% { transform: scale(1.09); }
+        100% { transform: scale(1.02); }
+      }
+      .ken-burns-img {
+        animation: kenburns 14s ease-in-out infinite !important;
+      }
+
+      /* ===== MORPHING GLOW ORBS ===== */
+      @keyframes morph-orb-1 {
+        0% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(60px, -60px) scale(1.2); }
+        66% { transform: translate(-40px, 40px) scale(0.85); }
+        100% { transform: translate(0, 0) scale(1); }
+      }
+      @keyframes morph-orb-2 {
+        0% { transform: translate(0, 0) scale(1.1); }
+        50% { transform: translate(-80px, 60px) scale(0.8); }
+        100% { transform: translate(0, 0) scale(1.1); }
+      }
+      .bg-orb-1 {
+        animation: morph-orb-1 16s ease-in-out infinite;
+      }
+      .bg-orb-2 {
+        animation: morph-orb-2 12s ease-in-out infinite;
+      }
+
+      /* ===== CAD DIELINE TRACING ===== */
+      @keyframes dieline-draw {
+        0% { stroke-dashoffset: 1200; opacity: 0; }
+        5% { opacity: 0.55; }
+        95% { opacity: 0.55; }
+        100% { stroke-dashoffset: 0; opacity: 0; }
+      }
+      .dieline-path {
+        stroke-dasharray: 1200;
+        stroke-dashoffset: 1200;
+        animation: dieline-draw 14s linear infinite;
+        opacity: 0;
+      }
+
+      /* ===== BUTTON SHEEN SWEEPER ===== */
+      .btn-shimmer {
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-shimmer::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -150%;
+        width: 50%;
+        height: 200%;
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.4) 50%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        transform: rotate(25deg);
+        transition: none;
+      }
+      .btn-shimmer:hover::after {
+        animation: sheen-swipe 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes sheen-swipe {
+        0% { left: -150%; }
+        100% { left: 150%; }
+      }
+
+      /* ===== IMAGES CONTAINER PULSE ===== */
+      @keyframes container-glow {
+        0%, 100% { box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.05); }
+        50% { box-shadow: 0 25px 60px -12px rgba(201, 10, 43, 0.16), 0 0 20px rgba(201, 10, 43, 0.08); }
+      }
+      .glow-image-container {
+        animation: container-glow 6s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- Floating Custom Quote Request Button -->
+    <a id="floating-quote-btn" href="#quote" onclick="document.querySelector('[id*=quote], [data-section=quote], #quote-section, #get-a-quote') && document.querySelector('[id*=quote], [data-section=quote]').scrollIntoView({behavior:'smooth'}); return false;" aria-label="Get a Custom Quote">
+      <span class="fqb-pulse"></span>
+      Custom Quote Request
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+
+    <script>
+      // Toggle scrolled class on header based on scroll position
+      window.addEventListener('scroll', function() {
+        const header = document.getElementById('site-header');
+        if (header) {
+          if (window.scrollY > 20) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        }
+      });
+
+      // Make floating button navigate to quote section or open quote modal
+      document.getElementById('floating-quote-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        // Try to find and click the Get a Quote button in the app
+        const quoteBtn = document.querySelector('[id*="quote"]') ||
+                         document.querySelector('[data-section="quote"]') ||
+                         document.querySelector('button[id*="quote"]') ||
+                         document.querySelector('a[href*="quote"]');
+        if (quoteBtn) {
+          quoteBtn.click();
+        } else {
+          // Navigate to quote page as fallback
+          window.location.href = '#quote';
+        }
+      });
+    </script>
+  </body>
+</html>
